@@ -1,0 +1,339 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --mint:    #D8F2D5;
+  --forest:  #1F4E23;
+  --teal:    #38A29D;
+  --orange:  #EFA63C;
+  --charcoal:#231F20;
+  --cream:   #F5EADA;
+  --white:   #FFFFFF;
+}
+
+body {
+  background: var(--mint);
+  color: var(--charcoal);
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Nav ── */
+nav {
+  background: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0.75rem 1.5rem;
+}
+
+.nav-logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.nav-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--white);
+  letter-spacing: 0.05em;
+}
+
+/* ── Layout ── */
+main {
+  flex: 1;
+  max-width: 520px;
+  margin: 48px auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+/* ── Player card ── */
+.player-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(31, 78, 35, 0.12);
+  margin-bottom: 2rem;
+}
+
+.player-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--white);
+  border-radius: 50%;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.tagline {
+  color: var(--teal);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Now playing ── */
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.album-art {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(31, 78, 35, 0.18);
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0;
+}
+
+#track-title {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--charcoal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#track-artist {
+  display: block;
+  color: var(--teal);
+  font-size: 0.875rem;
+  margin-top: 2px;
+}
+
+#track-album {
+  display: block;
+  color: #999;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* ── Control box ── */
+.control-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(31, 78, 35, 0.07);
+  border: 1.5px solid rgba(31, 78, 35, 0.18);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-bottom: 1rem;
+}
+
+.btn-play {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.btn-play:hover { background: var(--teal); }
+
+.elapsed-time {
+  font-family: 'Montserrat', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--forest);
+  min-width: 2.8rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.volume-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.vol-icon { color: var(--charcoal); flex-shrink: 0; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--teal);
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--teal);
+  cursor: pointer;
+  border: none;
+}
+
+/* ── Status ── */
+.status {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.25rem;
+  min-height: 1.2em;
+}
+
+.status.playing { color: var(--teal); }
+.status.error   { color: #b00; }
+
+/* ── Rating ── */
+.rating-area {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(31, 78, 35, 0.15);
+}
+
+.rating-area p {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+#stars {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.star {
+  font-size: 1.8rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.1s;
+  user-select: none;
+  line-height: 1;
+}
+
+.star.active,
+.star.hover { color: var(--orange); }
+
+.hidden { display: none !important; }
+
+/* ── Recently Played ── */
+.recently-played {
+  margin-bottom: 2rem;
+}
+
+.recently-played h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--forest);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+#recent-tracks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#recent-tracks li {
+  background: var(--white);
+  border: 1px solid rgba(31, 78, 35, 0.1);
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#recent-tracks li.empty {
+  color: #888;
+  font-size: 0.9rem;
+  border: none;
+  background: none;
+  padding-left: 0;
+}
+
+.rp-title  { font-weight: 600; font-size: 0.9rem; color: var(--charcoal); }
+.rp-artist { font-size: 0.8rem; color: var(--teal); }
+
+/* ── Footer ── */
+footer {
+  background: var(--cream);
+  color: var(--forest);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(31, 78, 35, 0.1);
+}
