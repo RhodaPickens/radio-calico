@@ -16,14 +16,25 @@ db.exec(`
     stream_url  TEXT
   );
 
+  CREATE INDEX IF NOT EXISTS idx_tracks_played_at ON tracks(played_at DESC);
+`);
+
+// Migrate ratings table to thumbs up/down schema with per-user tracking
+const ratingsCols = db.prepare('PRAGMA table_info(ratings)').all().map(c => c.name);
+if (!ratingsCols.includes('vote')) {
+  db.exec('DROP TABLE IF EXISTS ratings');
+}
+
+db.exec(`
   CREATE TABLE IF NOT EXISTS ratings (
     id         INTEGER PRIMARY KEY AUTOINCREMENT,
     track_id   INTEGER NOT NULL REFERENCES tracks(id) ON DELETE CASCADE,
-    rating     INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5),
-    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    vote       INTEGER NOT NULL CHECK(vote IN (-1, 1)),
+    user_id    TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    UNIQUE(track_id, user_id)
   );
 
-  CREATE INDEX IF NOT EXISTS idx_tracks_played_at ON tracks(played_at DESC);
   CREATE INDEX IF NOT EXISTS idx_ratings_track_id ON ratings(track_id);
 `);
 
