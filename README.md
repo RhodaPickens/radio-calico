@@ -2,7 +2,7 @@
 
 A lossless internet radio player built as a learning project using [Claude Code](https://claude.ai/code).
 
-![Radio Calico player screenshot](public/screenshot.png)
+![Radio Calico player screenshot](public/screenshot.jpg)
 
 ## About
 
