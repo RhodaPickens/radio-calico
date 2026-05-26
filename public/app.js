@@ -153,7 +153,6 @@ async function fetchMetadata() {
     if (trackKey !== lastTrackKey) {
       lastTrackKey = trackKey;
       albumArt.src = `https://d3d4yli4hf5bmh.cloudfront.net/cover.jpg?t=${Date.now()}`;
-      albumArt.classList.remove('hidden');
       await logSong(data.title, data.artist, data.album);
     }
 
@@ -198,10 +197,10 @@ fetchMetadata();
 
 function renderRecentTracks(tracks) {
   const list = document.getElementById('recent-tracks');
+  if (!tracks.length) return;
   list.innerHTML = tracks.map(t => `
     <li>
-      <span class="rp-title">${esc(t.title)}</span>
-      <span class="rp-artist">${esc(t.artist)}</span>
+      <span class="rp-artist">${esc(t.artist)}</span><span class="rp-sep">—</span><span class="rp-title">${esc(t.title)}</span>
     </li>
   `).join('');
 }

@@ -15,66 +15,65 @@
     <span class="nav-title">Radio Calico</span>
   </nav>
 
-  <main>
-    <section class="player-card">
-      <img src="/RadioCalicoLogoTM.png" alt="Radio Calico" class="player-logo" />
+  <!-- Full-width white player strip — outside <main> to break free of max-width -->
+  <section class="player-card">
+    <div class="player-layout">
 
-      <div class="live-badge">
-        <span class="live-dot"></span>
-        LIVE
+      <div class="player-art">
+        <img id="album-art" src="/RadioCalicoLogoTM.png" alt="Album art" />
       </div>
 
-      <h1>Radio Calico</h1>
-      <p class="tagline">24-bit / 48 kHz &middot; Lossless &middot; Ad-free</p>
-
-      <div class="now-playing">
-        <img id="album-art" class="album-art hidden" src="" alt="Album art" />
-        <div class="track-info">
-          <span id="track-title">—</span>
-          <span id="track-artist"></span>
+      <div class="player-info">
+        <div class="track-meta">
+          <span id="track-artist">—</span>
+          <span id="track-title"></span>
           <span id="track-album"></span>
+          <div class="quality-info">
+            <span>Source quality: 24-bit / 48 kHz</span>
+            <span>Stream quality: FLAC / Lossless</span>
+          </div>
         </div>
-      </div>
 
-      <div class="control-box">
-        <button id="btn-play-pause" class="btn-play" aria-label="Play">
-          <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="icon-pause" class="hidden" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-        </button>
-
-        <span id="elapsed-time" class="elapsed-time">0:00</span>
-
-        <div class="volume-area">
-          <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
-          </svg>
-          <input id="volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
-        </div>
-      </div>
-
-      <div id="status" class="status">Click play to tune in</div>
-
-      <div id="rating-area" class="rating-area hidden">
-        <p class="rate-label">Rate this song</p>
-        <div class="thumb-buttons">
+        <div id="rating-area" class="rating-area hidden">
+          <span class="rate-label">Rate this track</span>
           <button id="btn-thumbs-up" class="btn-thumb" aria-label="Thumbs up">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
               <path transform="rotate(180 12 12)" d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L10.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
             </svg>
             <span id="thumbs-up-count">0</span>
           </button>
           <button id="btn-thumbs-down" class="btn-thumb" aria-label="Thumbs down">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
               <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L10.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
             </svg>
             <span id="thumbs-down-count">0</span>
           </button>
         </div>
-      </div>
-    </section>
 
+        <div class="control-box">
+          <button id="btn-play-pause" class="btn-play" aria-label="Play">
+            <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="icon-pause" class="hidden" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+
+          <span id="elapsed-time" class="elapsed-time">0:00</span>
+
+          <div class="volume-area">
+            <svg class="vol-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+          </div>
+        </div>
+
+        <div id="status" class="status">Click play to tune in</div>
+      </div>
+    </div>
+  </section>
+
+  <main>
     <section class="recently-played">
-      <h2>Recently Played</h2>
+      <h2>Previous tracks:</h2>
       <ul id="recent-tracks">
         <li class="empty">Tune in to see recent tracks.</li>
       </ul>
